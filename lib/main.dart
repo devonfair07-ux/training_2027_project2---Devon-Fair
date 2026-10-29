@@ -53,7 +53,9 @@ class _ScoreScreenState extends State {
                   },
                   onSubtract: (){
                     setState(() {
-                      scoreL1--;
+                      if(scoreL1 > 0){
+                        scoreL1--;
+                      };
                     });
                   },
                 ),
@@ -67,7 +69,9 @@ class _ScoreScreenState extends State {
                   },
                   onSubtract: (){
                     setState(() {
-                      scoreL2--;
+                      if(scoreL2 > 0) {
+                        scoreL2--;
+                      }
                     });
                   },
                 ),
@@ -81,7 +85,9 @@ class _ScoreScreenState extends State {
                   },
                   onSubtract: (){
                     setState(() {
-                      scoreL3--;
+                      if(scoreL3 > 0) {
+                        scoreL3--;
+                      }
                     });
                   },
                 ),
@@ -95,12 +101,14 @@ class _ScoreScreenState extends State {
                   },
                   onSubtract: (){
                     setState(() {
-                      scoreL4--;
+                      if(scoreL4 > 0) {
+                        scoreL4--;
+                      }
                     });
                   },
                 ),
                 ScoreButtons(
-                  label: 'Algae $scoreAlgae',
+                  label: 'Algae Score: $scoreAlgae',
                   buttonColor: Colors.purple,
                   onAdd: () {
                     setState(() {
@@ -109,12 +117,14 @@ class _ScoreScreenState extends State {
                   },
                   onSubtract: (){
                     setState(() {
-                      scoreAlgae--;
+                      if(scoreAlgae > 0) {
+                        scoreAlgae--;
+                      }
                     });
                   },
                 ),
                 ScoreButtons(
-                  label: 'Net Score $netScore',
+                  label: 'Net Score: $netScore',
                   buttonColor: Colors.blue,
                   onAdd: () {
                     setState(() {
@@ -123,7 +133,9 @@ class _ScoreScreenState extends State {
                   },
                   onSubtract: (){
                     setState(() {
+                      if(netScore < 0){
                       netScore--;
+                      }
                     });
                   },
                 ),
