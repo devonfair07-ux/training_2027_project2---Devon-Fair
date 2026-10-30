@@ -12,6 +12,6 @@ class appTitleWidget extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final title = ref.watch(appTitle);
-    return Text(title);
+    return Text(title, style: const TextStyle(fontSize: 30));
   }
 }

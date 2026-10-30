@@ -32,7 +32,9 @@ class _ScoreScreenState extends State {
               buttonColor: Colors.green,
               onAdd: () {
                 setState(() {
-                  scoreL1++;
+                  if(scoreL1 >11) {
+                    scoreL1++;
+                  }
                 });
               },
               onSubtract: (){
@@ -48,7 +50,9 @@ class _ScoreScreenState extends State {
               buttonColor: Colors.green,
               onAdd: () {
                 setState(() {
-                  scoreL2++;
+                  if(scoreL2 > 11) {
+                    scoreL2++;
+                  }
                 });
               },
               onSubtract: (){
@@ -64,7 +68,9 @@ class _ScoreScreenState extends State {
               buttonColor: Colors.green,
               onAdd: () {
                 setState(() {
-                  scoreL3++;
+                  if(scoreL3 > 11) {
+                    scoreL3++;
+                  }
                 });
               },
               onSubtract: (){
@@ -80,7 +86,9 @@ class _ScoreScreenState extends State {
               buttonColor: Colors.green,
               onAdd: () {
                 setState(() {
-                  scoreL4++;
+                  if(scoreL4 > 11) {
+                    scoreL4++;
+                  }
                 });
               },
               onSubtract: (){
@@ -96,7 +104,7 @@ class _ScoreScreenState extends State {
               buttonColor: Colors.purple,
               onAdd: () {
                 setState(() {
-                  scoreAlgae++;
+                    scoreAlgae++;
                 });
               },
               onSubtract: (){
@@ -112,7 +120,7 @@ class _ScoreScreenState extends State {
               buttonColor: Colors.blue,
               onAdd: () {
                 setState(() {
-                  netScore++;
+                    netScore++;
                 });
               },
               onSubtract: (){
