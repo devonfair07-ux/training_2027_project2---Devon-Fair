@@ -7,13 +7,11 @@ import 'Title widget (Providor<>  Practice).dart';
 
 class ScoreButtons extends StatelessWidget {
   final String label;
-  final Color buttonColor;
   final VoidCallback onSubtract;
   final VoidCallback onAdd;
 
   const ScoreButtons({
     super.key,
-    required this.buttonColor,
     required this.onAdd,
     required this.onSubtract,
     required this.label,
@@ -44,9 +42,8 @@ class ScoreButtons extends StatelessWidget {
                 borderRadius: BorderRadius.circular(12.0),
               ),
               padding: EdgeInsets.zero,
-              backgroundColor: buttonColor,
             ),
-            child: Icon(Icons.add, color: Colors.white),
+            child: Icon(Icons.add),
           ),
         ),
         SizedBox(width: 5,height: 75,),
@@ -60,9 +57,8 @@ class ScoreButtons extends StatelessWidget {
                 borderRadius: BorderRadius.circular(12.0),
               ),
               padding: EdgeInsets.zero,
-              backgroundColor: buttonColor,
             ),
-            child: Icon(Icons.remove, color: Colors.white),
+            child: Icon(Icons.remove),
           ),
         ),
       ],

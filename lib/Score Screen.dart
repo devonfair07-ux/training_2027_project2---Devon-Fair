@@ -29,7 +29,6 @@ class _ScoreScreenState extends State {
           children: [
             ScoreButtons(
               label: 'Score L1: $scoreL1',
-              buttonColor: Colors.green,
               onAdd: () {
                 setState(() {
                   if(scoreL1 >11) {
@@ -47,7 +46,6 @@ class _ScoreScreenState extends State {
             ),
             ScoreButtons(
               label: 'Score L2: $scoreL2',
-              buttonColor: Colors.green,
               onAdd: () {
                 setState(() {
                   if(scoreL2 > 11) {
@@ -65,7 +63,6 @@ class _ScoreScreenState extends State {
             ),
             ScoreButtons(
               label: 'Score L3: $scoreL3',
-              buttonColor: Colors.green,
               onAdd: () {
                 setState(() {
                   if(scoreL3 > 11) {
@@ -83,7 +80,6 @@ class _ScoreScreenState extends State {
             ),
             ScoreButtons(
               label: 'Score L4: $scoreL4',
-              buttonColor: Colors.green,
               onAdd: () {
                 setState(() {
                   if(scoreL4 > 11) {
@@ -101,7 +97,6 @@ class _ScoreScreenState extends State {
             ),
             ScoreButtons(
               label: 'Algae Score: $scoreAlgae',
-              buttonColor: Colors.purple,
               onAdd: () {
                 setState(() {
                     scoreAlgae++;
@@ -117,7 +112,6 @@ class _ScoreScreenState extends State {
             ),
             ScoreButtons(
               label: 'Net Score: $netScore',
-              buttonColor: Colors.blue,
               onAdd: () {
                 setState(() {
                     netScore++;

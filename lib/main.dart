@@ -12,15 +12,16 @@ import 'Title widget (Providor<>  Practice).dart';
 import 'package:go_router/go_router.dart';
 
 void main() => runApp(
-  const ProviderScope(
+  ProviderScope(
     child: MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: NavigationExample(),
+      theme: ThemeData.from(colorScheme: ColorScheme.fromSeed(seedColor: Colors.purple)),
+      home: const NavigationExample(),
     ),
   ),
 );
 
-
+//
 
 class NavigationExample extends StatefulWidget {
   const NavigationExample({super.key});
