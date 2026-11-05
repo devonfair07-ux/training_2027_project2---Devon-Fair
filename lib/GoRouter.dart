@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:training_2027_project2/ScoutEnterTeam.dart';
+import 'package:training_2027_project2/Screens/ScoutEnterTeam.dart';
 import 'package:training_2027_project2/Screens/Home%20Screen.dart';
-import 'package:training_2027_project2/Score%20Screen.dart';
+import 'package:training_2027_project2/Screens/Score%20Screen.dart';
 
 final _router = GoRouter(
   initialLocation: '/home',
