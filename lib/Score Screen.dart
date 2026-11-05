@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'Custom + - Scoring.dart';
 import 'Title widget (Providor<>  Practice).dart';
 
 class ScoreScreen extends StatefulWidget {
@@ -31,7 +30,7 @@ class _ScoreScreenState extends State {
               label: 'Score L1: $scoreL1',
               onAdd: () {
                 setState(() {
-                  if(scoreL1 >11) {
+                  if(scoreL1 <11) {
                     scoreL1++;
                   }
                 });
@@ -48,7 +47,7 @@ class _ScoreScreenState extends State {
               label: 'Score L2: $scoreL2',
               onAdd: () {
                 setState(() {
-                  if(scoreL2 > 11) {
+                  if(scoreL2 < 11) {
                     scoreL2++;
                   }
                 });
@@ -65,7 +64,7 @@ class _ScoreScreenState extends State {
               label: 'Score L3: $scoreL3',
               onAdd: () {
                 setState(() {
-                  if(scoreL3 > 11) {
+                  if(scoreL3 < 11) {
                     scoreL3++;
                   }
                 });
@@ -82,7 +81,7 @@ class _ScoreScreenState extends State {
               label: 'Score L4: $scoreL4',
               onAdd: () {
                 setState(() {
-                  if(scoreL4 > 11) {
+                  if(scoreL4 < 11) {
                     scoreL4++;
                   }
                 });
@@ -132,3 +131,63 @@ class _ScoreScreenState extends State {
   }
 }
 
+class ScoreButtons extends StatelessWidget {
+  final String label;
+  final VoidCallback onSubtract;
+  final VoidCallback onAdd;
+
+  const ScoreButtons({
+    super.key,
+    required this.onAdd,
+    required this.onSubtract,
+    required this.label,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        SizedBox(
+            width: 300,
+            child: Text(
+                '$label',
+                style: const TextStyle(
+                    fontSize: 35),
+                textAlign: TextAlign.right)
+        ),
+        const SizedBox(width: 20),
+        SizedBox(
+          width: 70.0,
+          height: 70.0,
+          child: ElevatedButton(
+            onPressed: onAdd,
+            style: ElevatedButton.styleFrom(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(12.0),
+              ),
+              padding: EdgeInsets.zero,
+            ),
+            child: Icon(Icons.add),
+          ),
+        ), // plus button
+        SizedBox(width: 5,height: 75,),
+        SizedBox(
+          width: 70.0,
+          height: 70.0,
+          child: ElevatedButton(
+            onPressed: onSubtract,
+            style: ElevatedButton.styleFrom(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(12.0),
+              ),
+              padding: EdgeInsets.zero,
+            ),
+            child: Icon(Icons.remove),
+          ),
+        ), // minus button
+      ],
+    );
+  }
+}
