@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_riverpod/legacy.dart';
 
 final appTitle = Provider<String>((ref) {
-  return 'Reefscape scouting';
+  return 'Reefscout';
 });
 
 class appTitleWidget extends ConsumerWidget {

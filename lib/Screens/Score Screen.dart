@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 
 import 'ScoutEnterTeam.dart';
 
@@ -68,6 +69,25 @@ class _ScoreScreenState extends ConsumerState<ScoreScreen> {
                     ),
                   ),
                 ), // Team number
+                SizedBox(
+                  height: 80,
+                ),
+                SizedBox(
+                  width: 200.0,
+                  height: 70.0,
+                  child: ElevatedButton(
+                    onPressed: (){
+                      context.go('/teamNumber');
+                    },
+                    style: ElevatedButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(16.0),
+                      ),
+                      padding: EdgeInsets.zero,
+                    ),
+                    child: Text('Save to Reefscout', style: const TextStyle(fontSize: 20),),
+                  ),
+                ), // plus button
               ],
             ),
             Column(
