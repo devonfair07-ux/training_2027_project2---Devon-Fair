@@ -24,7 +24,7 @@ class _ScoreScreenState extends ConsumerState<ScoreScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final teamNumber = ref.watch(teamNumberProvidor);
+    final teamNumber = ref.watch(matchNumberProvidor);
     return Scaffold(
       body: Center(
         child: Row(
@@ -77,6 +77,8 @@ class _ScoreScreenState extends ConsumerState<ScoreScreen> {
                   height: 70.0,
                   child: ElevatedButton(
                     onPressed: (){
+                      Robots(
+                        L1: scoreL1, L2: scoreL2, L3: scoreL3, L4: scoreL4, algae: scoreAlgae, net: netScore);
                       context.go('/teamNumber');
                     },
                     style: ElevatedButton.styleFrom(
@@ -89,7 +91,7 @@ class _ScoreScreenState extends ConsumerState<ScoreScreen> {
                   ),
                 ), // plus button
               ],
-            ),
+            ), // Currently scouting:  and submit button
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -260,3 +262,23 @@ class ScoreButtons extends StatelessWidget {
     );
   }
 }
+
+class Robots {
+  final L1;
+  final L2;
+  final L3;
+  final L4;
+  final algae;
+  final net;
+
+  Robots({
+    required this.L1,
+    required this.L2,
+    required this.L3,
+    required this.L4,
+    required this.algae,
+    required this.net,
+  });
+}
+
+List<Robots> Robot = [];

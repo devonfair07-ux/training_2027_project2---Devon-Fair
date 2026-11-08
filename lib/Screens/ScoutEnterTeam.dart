@@ -2,8 +2,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:training_2027_project2/Team%20Select%20SegmentedButton.dart';
 
-class TeamNumberNotifier extends Notifier<String> {
+import '../API widget.dart';
+
+class MatchNumberNotifier extends Notifier<String> {
   @override
   String build() => '';
 
@@ -12,9 +15,13 @@ class TeamNumberNotifier extends Notifier<String> {
   }
 }
 
-final teamNumberProvidor = NotifierProvider<TeamNumberNotifier, String>(() {
-  return TeamNumberNotifier();
+
+
+
+final matchNumberProvidor = NotifierProvider<MatchNumberNotifier, String>(() {
+  return MatchNumberNotifier();
 });
+
 
 
 
@@ -23,7 +30,6 @@ class Scoutenterteam extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final _userAnswer = ref.watch(teamNumberProvidor);
     return Column(
       mainAxisSize: MainAxisSize.min,
       mainAxisAlignment: MainAxisAlignment.center,
@@ -32,31 +38,33 @@ class Scoutenterteam extends ConsumerWidget {
         SizedBox(
           height: 100,
           child: Text(
-              'What team are you scouting?',
-              style: const TextStyle(
-                  fontSize: 35),textAlign: TextAlign.center),
+            'What match are you scouting?',
+            style: const TextStyle(fontSize: 35),
+            textAlign: TextAlign.center,
+          ),
         ),
+
         SizedBox(
           width: 200,
           height: 75,
           child: TextField(
             decoration: const InputDecoration(
-              labelText: 'Team Number:',
-              hintText: 'Enter a team number',
+              labelText: 'Match Number:',
+              hintText: '#1 - 77',
               border: OutlineInputBorder(),
             ),
             keyboardType: TextInputType.number,
-            onChanged: (value) => ref.read(teamNumberProvidor.notifier).updateText(value),
+            onChanged: (value) =>
+                ref.read(matchNumberProvidor.notifier).updateText(value),
           ),
         ),
+
         SizedBox(
           width: 200,
-          height: 75,
+          height: 50,
           child: ElevatedButton(
-            onPressed: _userAnswer.trim().isEmpty
-                ? null // Disables the button and grays it out when empty
-                : () {
-              context.go('/teamScoring');
+            onPressed: () {
+              ref.invalidate(matchProvider);
             },
             style: ElevatedButton.styleFrom(
               shape: RoundedRectangleBorder(
@@ -64,9 +72,12 @@ class Scoutenterteam extends ConsumerWidget {
               ),
               padding: EdgeInsets.zero,
             ),
-            child: Icon(Icons.navigate_next_outlined, size: 45),
+            child: Text('Next', style: const TextStyle(fontSize: 22)),
           ),
         ),
+        SizedBox(height: 20,),
+        TeamSegmentedButton(),
+        Text('Team: $'),
       ],
     );
   }

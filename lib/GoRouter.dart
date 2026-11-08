@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:training_2027_project2/Screens/ScoutEnterTeam.dart';
 import 'package:training_2027_project2/Screens/Home%20Screen.dart';
 import 'package:training_2027_project2/Screens/Score%20Screen.dart';
+import 'Data Screen.dart';
 
 final _router = GoRouter(
   initialLocation: '/home',
@@ -21,6 +22,10 @@ final _router = GoRouter(
         GoRoute(
           path: '/teamScoring',
           builder: (context, state) => const ScoreScreen(),
+        ),
+        GoRoute(
+          path: '/teamData',
+          builder: (context, state) => const DataScreen(),
         ),
       ],
     ),
@@ -54,7 +59,12 @@ class BottomBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final selectedIndex = location == '/home' ? 0 : 1;
+    final selectedIndex = switch (location) {
+      '/home' => 0,
+      '/teamData' => 2,
+      '/teamNumber' => 1,
+    _ => 0,
+    };
 
     return Scaffold(
       body: child,
@@ -62,17 +72,26 @@ class BottomBar extends StatelessWidget {
         selectedIndex: selectedIndex,
         indicatorColor: Colors.amber,
         onDestinationSelected: (index) {
-          context.go(index == 0 ? '/home' : '/teamNumber');
+          final location = switch (index) {
+            0 => '/home',
+            1 => '/teamNumber',
+            2 => '/teamData',
+            _ => '/home',
+          };
+          context.go(location);
         },
         destinations: const [
           NavigationDestination(
-            selectedIcon: Icon(Icons.home),
             icon: Icon(Icons.home_outlined),
             label: 'Home',
           ),
           NavigationDestination(
-            icon: Icon(Icons.kebab_dining_outlined),
+            icon: Icon(Icons.search),
             label: 'Scouting',
+          ),
+          NavigationDestination(
+            icon: Icon(Icons.storage),
+            label: 'Data Storage',
           ),
         ],
       ),
