@@ -3,10 +3,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:http/http.dart' as http;
-import 'package:training_2027_project2/Data%20Screen.dart';
+import 'package:training_2027_project2/API%20key%20providor.dart';
 import 'package:training_2027_project2/Screens/ScoutEnterTeam.dart';
 import 'package:training_2027_project2/Team%20Select%20SegmentedButton.dart';
-
 
 
 final matchProvider = FutureProvider<Map<String, dynamic>>((ref) async {
@@ -15,7 +14,7 @@ final matchProvider = FutureProvider<Map<String, dynamic>>((ref) async {
 
   final response = await http.get(
     Uri.parse('https://www.thebluealliance.com/api/v3/match/$matchKey'),
-    headers: {'X-TBA-Auth-Key': '1vCNQIOE0iupTWaAeMGOmlE3e3tXPfAHx4nYT5mJ7YbUI9frqeonJ5oRYTavJM2K'},
+    headers: {'X-TBA-Auth-Key': ref.watch(tbaApiKeyProvider)},
   );
 
   if(response.statusCode != 200){
@@ -35,6 +34,7 @@ class teamSelectPage extends ConsumerWidget {
     final matches = ref.watch(matchProvider);
     final matchNumber = ref.watch(matchNumberProvidor);
     final teamPosition = ref.watch(segmentProvidor);
+
     if (matchNumber.trim().isEmpty) {
       return const Text('Enter a match number');
     }
@@ -47,7 +47,14 @@ class teamSelectPage extends ConsumerWidget {
         final teamKeys =
         data['alliances'][alliance]['team_keys'] as List<dynamic>;
 
-        return Text(teamKeys[teamIndex].toString().replaceFirst('frc', ''));
+        final number = int.tryParse(teamKeys[teamIndex].toString().replaceFirst('frc', ''));
+
+        if(number != null && number < 78 && number > 0){
+          return Text('$number');
+        }else{
+          return Text('Enter a valid match number');
+        }
+
       },
       loading: () => const CircularProgressIndicator(),
       error: (error, stackTrace) => Text('Error: $error'),
