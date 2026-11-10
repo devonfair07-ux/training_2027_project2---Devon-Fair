@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class SegmentNotifier extends Notifier<String> {
   @override
-  String build() => '';
+  String build() => 'Blue 1';
 
   void updateText(String value) {
     state = value;

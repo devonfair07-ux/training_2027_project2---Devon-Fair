@@ -15,15 +15,9 @@ class MatchNumberNotifier extends Notifier<String> {
   }
 }
 
-
-
-
 final matchNumberProvidor = NotifierProvider<MatchNumberNotifier, String>(() {
   return MatchNumberNotifier();
 });
-
-
-
 
 class Scoutenterteam extends ConsumerWidget {
   const Scoutenterteam({super.key});
@@ -75,9 +69,9 @@ class Scoutenterteam extends ConsumerWidget {
             child: Text('Next', style: const TextStyle(fontSize: 22)),
           ),
         ),
-        SizedBox(height: 20,),
+        SizedBox(height: 20),
         TeamSegmentedButton(),
-        Text('Team: $'),
+        teamSelectPage(),
       ],
     );
   }
