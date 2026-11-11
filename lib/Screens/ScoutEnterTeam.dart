@@ -59,6 +59,7 @@ class Scoutenterteam extends ConsumerWidget {
           child: ElevatedButton(
             onPressed: () {
               ref.invalidate(matchProvider);
+              context.go('/teamScoring');
             },
             style: ElevatedButton.styleFrom(
               shape: RoundedRectangleBorder(
@@ -71,7 +72,10 @@ class Scoutenterteam extends ConsumerWidget {
         ),
         SizedBox(height: 20),
         TeamSegmentedButton(),
-        teamSelectPage(),
+        SizedBox(height: 20),
+        teamNumberAPI(
+          additionalText: 'Team:',
+        ),
       ],
     );
   }

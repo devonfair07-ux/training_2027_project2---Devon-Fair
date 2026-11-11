@@ -3,8 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:training_2027_project2/API%20widget.dart';
 
-import 'ScoutEnterTeam.dart';
+import '../Robots class & list.dart';
+
 
 class ScoreScreen extends ConsumerStatefulWidget {
   const ScoreScreen({super.key});
@@ -24,7 +26,6 @@ class _ScoreScreenState extends ConsumerState<ScoreScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final teamNumber = ref.watch(matchNumberProvidor);
     return Scaffold(
       body: Center(
         child: Row(
@@ -58,28 +59,21 @@ class _ScoreScreenState extends ConsumerState<ScoreScreen> {
                     child: Center(
                       child: FittedBox(
                         fit: BoxFit.scaleDown,
-                        child: Text(
-                          teamNumber,
-                          style: TextStyle(
-                            color: Theme.of(context).colorScheme.onPrimary,
-                            fontSize: 100,
-                          ),
-                        ),
+                        child: teamNumberAPI( additionalText: '',),
                       ),
                     ),
                   ),
                 ), // Team number
-                SizedBox(
-                  height: 80,
-                ),
+                SizedBox(height: 80,),
                 SizedBox(
                   width: 200.0,
                   height: 70.0,
                   child: ElevatedButton(
                     onPressed: (){
-                      Robots(
-                        L1: scoreL1, L2: scoreL2, L3: scoreL3, L4: scoreL4, algae: scoreAlgae, net: netScore);
-                      context.go('/teamNumber');
+                      robot.add(
+                          Robots(
+                          L1: scoreL1, L2: scoreL2, L3: scoreL3, L4: scoreL4, algae: scoreAlgae, net: netScore));
+                      context.go('/home');
                     },
                     style: ElevatedButton.styleFrom(
                       shape: RoundedRectangleBorder(
@@ -263,22 +257,3 @@ class ScoreButtons extends StatelessWidget {
   }
 }
 
-class Robots {
-  final L1;
-  final L2;
-  final L3;
-  final L4;
-  final algae;
-  final net;
-
-  Robots({
-    required this.L1,
-    required this.L2,
-    required this.L3,
-    required this.L4,
-    required this.algae,
-    required this.net,
-  });
-}
-
-List<Robots> Robot = [];

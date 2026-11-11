@@ -3,7 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:training_2027_project2/Screens/ScoutEnterTeam.dart';
 import 'package:training_2027_project2/Screens/Home%20Screen.dart';
 import 'package:training_2027_project2/Screens/Score%20Screen.dart';
-import 'Data Screen.dart';
+import 'Screens/Data Ask Screen.dart';
 
 final _router = GoRouter(
   initialLocation: '/home',
@@ -24,7 +24,7 @@ final _router = GoRouter(
           builder: (context, state) => const ScoreScreen(),
         ),
         GoRoute(
-          path: '/teamData',
+          path: '/teamDataAsk',
           builder: (context, state) => const DataScreen(),
         ),
       ],
@@ -61,7 +61,7 @@ class BottomBar extends StatelessWidget {
   Widget build(BuildContext context) {
     final selectedIndex = switch (location) {
       '/home' => 0,
-      '/teamData' => 2,
+      '/teamDataAsk' => 2,
       '/teamNumber' => 1,
     _ => 0,
     };
@@ -75,7 +75,7 @@ class BottomBar extends StatelessWidget {
           final location = switch (index) {
             0 => '/home',
             1 => '/teamNumber',
-            2 => '/teamData',
+            2 => '/teamDataAsk',
             _ => '/home',
           };
           context.go(location);

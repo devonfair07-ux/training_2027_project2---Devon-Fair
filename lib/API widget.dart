@@ -26,12 +26,13 @@ final matchProvider = FutureProvider<Map<String, dynamic>>((ref) async {
 
 
 
-class teamSelectPage extends ConsumerWidget {
-  const teamSelectPage({super.key});
+class teamNumberAPI extends ConsumerWidget {
+  final String additionalText;
+  const teamNumberAPI({required this.additionalText, super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final matches = ref.watch(matchProvider);
+    final matchesData = ref.watch(matchProvider);
     final matchNumber = ref.watch(matchNumberProvidor);
     final teamPosition = ref.watch(segmentProvidor);
 
@@ -39,7 +40,11 @@ class teamSelectPage extends ConsumerWidget {
       return const Text('Enter a match number');
     }
 
-    return matches.when(
+    if(int.tryParse(matchNumber) !> 77 || int.tryParse(matchNumber) !< 1){
+      return Text('Invalid match number');
+    }
+
+    return matchesData.when(
       data: (data) {
         final parts = teamPosition.split(' ');
         final alliance = parts[0].toLowerCase();
@@ -49,11 +54,10 @@ class teamSelectPage extends ConsumerWidget {
 
         final number = int.tryParse(teamKeys[teamIndex].toString().replaceFirst('frc', ''));
 
-        if(number != null && number < 78 && number > 0){
-          return Text('$number');
-        }else{
-          return Text('Enter a valid match number');
+        if(number != null){
+          return Text('$additionalText $number', style: TextStyle(fontSize: 35));
         }
+        return Text('Invalid match number',);
 
       },
       loading: () => const CircularProgressIndicator(),
