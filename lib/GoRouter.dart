@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:training_2027_project2/Screens/ScoutEnterTeam.dart';
 import 'package:training_2027_project2/Screens/Home%20Screen.dart';
 import 'package:training_2027_project2/Screens/Score%20Screen.dart';
+import 'Data Screen.dart';
 import 'Screens/Data Ask Screen.dart';
 
 final _router = GoRouter(
@@ -25,7 +26,11 @@ final _router = GoRouter(
         ),
         GoRoute(
           path: '/teamDataAsk',
-          builder: (context, state) => const DataScreen(),
+          builder: (context, state) => const DataAskScreen(),
+        ),
+        GoRoute(
+          path: '/teamData',
+          builder: (context, state) => const dataScreen(),
         ),
       ],
     ),

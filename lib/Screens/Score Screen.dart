@@ -47,23 +47,7 @@ class _ScoreScreenState extends ConsumerState<ScoreScreen> {
                   ),
                 ), // Text: Currently Scouting:
                 SizedBox(height: 20), // Spacer
-                Container(
-                  width: 200,
-                  height: 50,
-                  decoration: BoxDecoration(
-                    color: Theme.of(context).colorScheme.primary,
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 3),
-                    child: Center(
-                      child: FittedBox(
-                        fit: BoxFit.scaleDown,
-                        child: teamNumberAPI( additionalText: '',),
-                      ),
-                    ),
-                  ),
-                ), // Team number
+                teamNumberAPI(additionalText: ''), // Team number
                 SizedBox(height: 80,),
                 SizedBox(
                   width: 200.0,

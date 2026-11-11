@@ -55,7 +55,11 @@ class teamNumberAPI extends ConsumerWidget {
         final number = int.tryParse(teamKeys[teamIndex].toString().replaceFirst('frc', ''));
 
         if(number != null){
-          return Text('$additionalText $number', style: TextStyle(fontSize: 35));
+          return Text(
+            '$additionalText $number',
+            style: const TextStyle(fontSize: 35),
+            textAlign: TextAlign.center,
+          );
         }
         return Text('Invalid match number',);
 
