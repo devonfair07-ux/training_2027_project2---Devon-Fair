@@ -1,19 +1,21 @@
-class Robots {
-  final L1;
-  final L2;
-  final L3;
-  final L4;
-  final algae;
-  final net;
+class Robot {
+  int tNumber;
+  int scoreL1;
+  int scoreL2;
+  int scoreL3;
+  int scoreL4;
+  int scoreAlgae;
+  int netScore;
 
-  Robots({
-    required this.L1,
-    required this.L2,
-    required this.L3,
-    required this.L4,
-    required this.algae,
-    required this.net,
+  Robot({
+    required this.tNumber,
+    required this.scoreL1,
+    required this.scoreL2,
+    required this.scoreL3,
+    required this.scoreL4,
+    required this.scoreAlgae,
+    required this.netScore,
   });
 }
 
-List<Robots> robot = [];
+List<Robot> robots = [];

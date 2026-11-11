@@ -7,6 +7,20 @@ import 'package:training_2027_project2/API%20key%20providor.dart';
 import 'package:training_2027_project2/Screens/ScoutEnterTeam.dart';
 import 'package:training_2027_project2/Team%20Select%20SegmentedButton.dart';
 
+class teamNumber extends Notifier<String> {
+  @override
+  String build() => '';
+
+  void updateText(String value) {
+    state = value;
+  }
+}
+
+final teamNumberProvidor =  NotifierProvider<teamNumber, String>(() {
+  return teamNumber();
+});
+
+
 
 final matchProvider = FutureProvider<Map<String, dynamic>>((ref) async {
   final matchNumber = ref.watch(matchNumberProvidor);
@@ -53,6 +67,7 @@ class teamNumberAPI extends ConsumerWidget {
         data['alliances'][alliance]['team_keys'] as List<dynamic>;
 
         final number = int.tryParse(teamKeys[teamIndex].toString().replaceFirst('frc', ''));
+        (number) => ref.read(teamNumberProvidor.notifier).updateText(number);
 
         if(number != null){
           return Text(

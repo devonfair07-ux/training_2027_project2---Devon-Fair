@@ -26,6 +26,7 @@ class _ScoreScreenState extends ConsumerState<ScoreScreen> {
 
   @override
   Widget build(BuildContext context) {
+    int teamNumber = int.tryParse(ref.watch(teamNumberProvidor))
     return Scaffold(
       body: Center(
         child: Row(
@@ -54,9 +55,8 @@ class _ScoreScreenState extends ConsumerState<ScoreScreen> {
                   height: 70.0,
                   child: ElevatedButton(
                     onPressed: (){
-                      robot.add(
-                          Robots(
-                          L1: scoreL1, L2: scoreL2, L3: scoreL3, L4: scoreL4, algae: scoreAlgae, net: netScore));
+                      robots.add(
+                          Robot(tNumber: , scoreL1: null, scoreL2: null, scoreL3: null, scoreL4: null, scoreAlgae: null, netScore: null));
                       context.go('/home');
                     },
                     style: ElevatedButton.styleFrom(
