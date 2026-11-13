@@ -26,7 +26,8 @@ class Scoutenterteam extends ConsumerWidget {
     final matchNumber = int.tryParse(ref.watch(matchNumberProvidor).trim());
     final validMatchNumber =
         matchNumber != null && matchNumber >= 1 && matchNumber <= 70;
-    return Column(
+    return Scaffold(
+        body: Center(child: Column(
       mainAxisSize: MainAxisSize.min,
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
@@ -76,6 +77,8 @@ class Scoutenterteam extends ConsumerWidget {
         SizedBox(height: 20),
         TeamNumberAPI(additionalText: 'Team:'),
       ],
+    )
+        )
     );
   }
 }

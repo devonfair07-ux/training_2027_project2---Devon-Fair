@@ -96,7 +96,7 @@ class _DataAskScreenState extends ConsumerState<DataAskScreen> {
               child: ElevatedButton(
                 onPressed: int.tryParse(ref.watch(teamInputProvider)) != null
                     ? () {
-                        context.go('/teamData');
+                        context.go('/PickData');
                       }
                     : null,
                 style: ElevatedButton.styleFrom(
@@ -105,7 +105,22 @@ class _DataAskScreenState extends ConsumerState<DataAskScreen> {
                   ),
                   padding: EdgeInsets.zero,
                 ),
-                child: Text('Next', style: const TextStyle(fontSize: 22)),
+                child: Text('Pick Team', style: const TextStyle(fontSize: 22)),
+              ),
+            ),
+            SizedBox(height: 80,),
+            SizedBox(
+              width: 250,
+              height: 50,
+              child: ElevatedButton(
+                onPressed: (){context.go('/AllData');},
+                style: ElevatedButton.styleFrom(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12.0),
+                  ),
+                  padding: EdgeInsets.zero,
+                ),
+                child: Text('All Teams', style: const TextStyle(fontSize: 26)),
               ),
             ),
           ],

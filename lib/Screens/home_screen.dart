@@ -30,13 +30,13 @@ class HomeScreen extends StatelessWidget {
                   ),
                   padding: EdgeInsets.zero,
                 ),
-                child: Text('START SCOUTING', style: TextStyle(fontSize: 20), textAlign: TextAlign.center,),
+                child: Text('Start Scouting', style: TextStyle(fontSize: 20), textAlign: TextAlign.center,),
               ),
             ),
             SizedBox(height: 40,),
             SizedBox(
-              width: 250.0,
-              height: 75.0,
+              width: 175.0,
+              height: 50.0,
               child: ElevatedButton(
                 onPressed: (){context.go('/teamDataAsk');},
                 style: ElevatedButton.styleFrom(
@@ -45,7 +45,7 @@ class HomeScreen extends StatelessWidget {
                   ),
                   padding: EdgeInsets.zero,
                 ),
-                child: Text('COLLECTED DATA', style: TextStyle(fontSize: 20), textAlign: TextAlign.center,),
+                child: Text('Collected Data', style: TextStyle(fontSize: 18), textAlign: TextAlign.center,),
               ),
             ),
           ],

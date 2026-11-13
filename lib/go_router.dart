@@ -2,7 +2,8 @@ import 'package:flutter/material.dart' as go_router;
 import 'package:go_router/go_router.dart';
 import 'package:training_2027_project2/Screens/scout_enter_team.dart';
 
-import 'Screens/data_screen.dart';
+import 'Screens/all_data_screen.dart';
+import 'Screens/specific_data_screen.dart';
 import 'Screens/data_ask_screen.dart';
 import 'Screens/home_screen.dart';
 import 'Screens/score_screen.dart';
@@ -28,8 +29,12 @@ final _router = GoRouter(
           builder: (context, state) => const DataAskScreen(),
         ),
         GoRoute(
-          path: '/teamData',
-          builder: (context, state) => const DataScreen(),
+          path: '/PickData',
+          builder: (context, state) => const SpecificDataScreen(),
+        ),
+        GoRoute(
+          path: '/AllData',
+          builder: (context, state) => const AllDataScreen(),
         ),
       ],
     ),
@@ -62,10 +67,12 @@ class BottomBar extends go_router.StatelessWidget {
   @override
   go_router.Widget build(go_router.BuildContext context) {
     final selectedIndex = switch (location) {
-      '/home' => 0,
-      '/teamDataAsk' => 2,
-      '/teamData' => 2,
+      '/PickData' => 2,
+      '/AllData' => 2,
+      '/teamScoring' => 1,
       '/teamNumber' => 1,
+      '/teamDataAsk' => 2,
+      '/home' => 0,
       _ => 0,
     };
 

@@ -28,6 +28,13 @@ class _ScoreScreenState extends ConsumerState<ScoreScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text('All Teams:'),
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          onPressed: () => context.go('/teamNumber'),
+        ),
+      ),
       body: Center(
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,

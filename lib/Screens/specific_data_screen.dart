@@ -5,8 +5,8 @@ import 'package:go_router/go_router.dart';
 import '../team_data_providor.dart';
 import 'data_ask_screen.dart';
 
-class DataScreen extends ConsumerWidget {
-  const DataScreen({super.key});
+class SpecificDataScreen extends ConsumerWidget {
+  const SpecificDataScreen({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -16,6 +16,13 @@ class DataScreen extends ConsumerWidget {
         .where((submission) => submission.teamNumber == teamNumber)
         .toList();
     return Scaffold(
+      appBar: AppBar(
+        title: Text('All Teams:'),
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          onPressed: () => context.go('/teamDataAsk'),
+        ),
+      ),
       body: teamNumber.isEmpty
           ? Center(child: Column(
         mainAxisSize: MainAxisSize.min,
