@@ -9,6 +9,5 @@ final tbaApiKeyProvider = Provider<String>((ref) {
           '--dart-define-from-file=api-keys.json.',
     );
   }
-
   return key;
 });

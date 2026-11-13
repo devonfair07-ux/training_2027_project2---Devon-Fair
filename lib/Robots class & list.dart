@@ -1,5 +1,7 @@
-class Robot {
-  int tNumber;
+class ScoreSubmission {
+  String teamNumber;
+  String eventName;
+  String matchNumber;
   int scoreL1;
   int scoreL2;
   int scoreL3;
@@ -7,8 +9,10 @@ class Robot {
   int scoreAlgae;
   int netScore;
 
-  Robot({
-    required this.tNumber,
+  ScoreSubmission({
+    required this.eventName,
+    required this.matchNumber,
+    required this.teamNumber,
     required this.scoreL1,
     required this.scoreL2,
     required this.scoreL3,
@@ -17,5 +21,3 @@ class Robot {
     required this.netScore,
   });
 }
-
-List<Robot> robots = [];

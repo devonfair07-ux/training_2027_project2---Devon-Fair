@@ -6,6 +6,8 @@ import 'package:go_router/go_router.dart';
 import 'package:training_2027_project2/API%20widget.dart';
 
 import '../Robots class & list.dart';
+import '../TeamData Providor.dart';
+import 'ScoutEnterTeam.dart';
 
 
 class ScoreScreen extends ConsumerStatefulWidget {
@@ -26,7 +28,6 @@ class _ScoreScreenState extends ConsumerState<ScoreScreen> {
 
   @override
   Widget build(BuildContext context) {
-    int teamNumber = int.tryParse(ref.watch(teamNumberProvidor))
     return Scaffold(
       body: Center(
         child: Row(
@@ -55,8 +56,18 @@ class _ScoreScreenState extends ConsumerState<ScoreScreen> {
                   height: 70.0,
                   child: ElevatedButton(
                     onPressed: (){
-                      robots.add(
-                          Robot(tNumber: , scoreL1: null, scoreL2: null, scoreL3: null, scoreL4: null, scoreAlgae: null, netScore: null));
+                      final submission = ScoreSubmission(
+                      teamNumber: ref.read(teamNumberProvidor),
+                      eventName: 'Pinnacles Regional 2025',
+                      matchNumber: ref.read(matchNumberProvidor),
+                      scoreL1: scoreL1,
+                      scoreL2: scoreL2,
+                      scoreAlgae: scoreAlgae,
+                      scoreL3: scoreL3,
+                      scoreL4: scoreL4,
+                      netScore: netScore,
+                      );
+                      ref.read(eventScoresProvider.notifier).submit(submission);
                       context.go('/home');
                     },
                     style: ElevatedButton.styleFrom(

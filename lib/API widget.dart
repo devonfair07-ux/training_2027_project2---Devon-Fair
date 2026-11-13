@@ -24,7 +24,7 @@ final teamNumberProvidor =  NotifierProvider<teamNumber, String>(() {
 
 final matchProvider = FutureProvider<Map<String, dynamic>>((ref) async {
   final matchNumber = ref.watch(matchNumberProvidor);
-  final matchKey = '2026okok_qm$matchNumber';
+  final matchKey = '2025camb$matchNumber';
 
   final response = await http.get(
     Uri.parse('https://www.thebluealliance.com/api/v3/match/$matchKey'),
@@ -54,7 +54,7 @@ class teamNumberAPI extends ConsumerWidget {
       return const Text('Enter a match number');
     }
 
-    if(int.tryParse(matchNumber) !> 77 || int.tryParse(matchNumber) !< 1){
+    if(int.tryParse(matchNumber) !> 70 || int.tryParse(matchNumber) !< 1){
       return Text('Invalid match number');
     }
 

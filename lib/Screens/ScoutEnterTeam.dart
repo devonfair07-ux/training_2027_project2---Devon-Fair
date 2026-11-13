@@ -44,7 +44,7 @@ class Scoutenterteam extends ConsumerWidget {
           child: TextField(
             decoration: const InputDecoration(
               labelText: 'Match Number:',
-              hintText: '#1 - 77',
+              hintText: '#1 - 70',
               border: OutlineInputBorder(),
             ),
             keyboardType: TextInputType.number,
