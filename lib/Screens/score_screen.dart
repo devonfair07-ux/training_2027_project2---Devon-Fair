@@ -3,11 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:training_2027_project2/API%20widget.dart';
 
-import '../Robots class & list.dart';
-import '../TeamData Providor.dart';
-import 'ScoutEnterTeam.dart';
+import '../API_widget.dart';
+import '../robots_class.dart';
+import '../team_select_segmented_button.dart';
+import '../team_data_providor.dart';
+import 'scout_enter_team.dart';
 
 
 class ScoreScreen extends ConsumerStatefulWidget {
@@ -55,7 +56,16 @@ class _ScoreScreenState extends ConsumerState<ScoreScreen> {
                   width: 200.0,
                   height: 70.0,
                   child: ElevatedButton(
-                    onPressed: (){
+                    onPressed: () async {
+                      final data = await ref.read(matchProvider.future);
+                      final parts = ref.read(segmentProvidor).split(' ');
+                      final alliance = parts[0].toLowerCase();
+                      final teamIndex = int.parse(parts[1]) - 1;
+                      final keys = data['alliances'][alliance]['team_keys'] as List<dynamic>;
+                      final teamNumber = keys[teamIndex].toString().replaceFirst('frc', '');
+
+                      ref.read(teamNumberProvidor.notifier).updateText(teamNumber);
+
                       final submission = ScoreSubmission(
                       teamNumber: ref.read(teamNumberProvidor),
                       eventName: 'Pinnacles Regional 2025',
@@ -67,6 +77,7 @@ class _ScoreScreenState extends ConsumerState<ScoreScreen> {
                       scoreL4: scoreL4,
                       netScore: netScore,
                       );
+
                       ref.read(eventScoresProvider.notifier).submit(submission);
                       context.go('/home');
                     },

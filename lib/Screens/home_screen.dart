@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../Title widget (Providor<>  Practice).dart';
+import '../title_widget.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
