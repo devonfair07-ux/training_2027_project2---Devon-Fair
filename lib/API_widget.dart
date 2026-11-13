@@ -3,9 +3,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:http/http.dart' as http;
-import 'package:training_2027_project2/API%20key%20providor.dart';
-import 'package:training_2027_project2/Screens/ScoutEnterTeam.dart';
-import 'package:training_2027_project2/Team%20Select%20SegmentedButton.dart';
+import 'package:training_2027_project2/Screens/scout_enter_team.dart';
+import 'package:training_2027_project2/team_select_segmented_button.dart';
+
+import 'API_key_providor.dart';
 
 class teamNumber extends Notifier<String> {
   @override
@@ -23,8 +24,8 @@ final teamNumberProvidor =  NotifierProvider<teamNumber, String>(() {
 
 
 final matchProvider = FutureProvider<Map<String, dynamic>>((ref) async {
-  final matchNumber = ref.watch(matchNumberProvidor);
-  final matchKey = '2025camb$matchNumber';
+  final matchNumber = ref.watch(matchNumberProvidor).trim();
+  final matchKey = '2025camb_qm$matchNumber';
 
   final response = await http.get(
     Uri.parse('https://www.thebluealliance.com/api/v3/match/$matchKey'),
@@ -46,17 +47,19 @@ class teamNumberAPI extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final matchesData = ref.watch(matchProvider);
-    final matchNumber = ref.watch(matchNumberProvidor);
-    final teamPosition = ref.watch(segmentProvidor);
+    final matchNumberText = ref.watch(matchNumberProvidor).trim();
 
-    if (matchNumber.trim().isEmpty) {
+    if (matchNumberText.isEmpty) {
       return const Text('Enter a match number');
     }
 
-    if(int.tryParse(matchNumber) !> 70 || int.tryParse(matchNumber) !< 1){
-      return Text('Invalid match number');
+    final matchNumber = int.tryParse(matchNumberText);
+    if (matchNumber == null || matchNumber < 1 || matchNumber > 70) {
+      return const Text('Invalid match number');
     }
+
+    final teamPosition = ref.watch(segmentProvidor);
+    final matchesData = ref.watch(matchProvider);
 
     return matchesData.when(
       data: (data) {
@@ -67,7 +70,6 @@ class teamNumberAPI extends ConsumerWidget {
         data['alliances'][alliance]['team_keys'] as List<dynamic>;
 
         final number = int.tryParse(teamKeys[teamIndex].toString().replaceFirst('frc', ''));
-        (number) => ref.read(teamNumberProvidor.notifier).updateText(number);
 
         if(number != null){
           return Text(

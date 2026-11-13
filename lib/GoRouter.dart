@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:training_2027_project2/Screens/ScoutEnterTeam.dart';
-import 'package:training_2027_project2/Screens/Home%20Screen.dart';
-import 'package:training_2027_project2/Screens/Score%20Screen.dart';
-import 'Data Screen.dart';
-import 'Screens/Data Ask Screen.dart';
+import 'package:training_2027_project2/Screens/scout_enter_team.dart';
+import 'Screens/data_screen.dart';
+import 'Screens/data_ask_screen.dart';
+import 'Screens/home_screen.dart';
+import 'Screens/score_screen.dart';
 
 final _router = GoRouter(
   initialLocation: '/home',
@@ -67,8 +67,9 @@ class BottomBar extends StatelessWidget {
     final selectedIndex = switch (location) {
       '/home' => 0,
       '/teamDataAsk' => 2,
+      '/teamData' => 2,
       '/teamNumber' => 1,
-    _ => 0,
+      _ => 0,
     };
 
     return Scaffold(
