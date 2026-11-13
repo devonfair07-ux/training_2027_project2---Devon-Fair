@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -23,7 +22,7 @@ class TeamInputNotifier extends Notifier<String> {
   }
 }
 
-final TeamInputProvider = NotifierProvider<TeamInputNotifier, String>(
+final teamInputProvider = NotifierProvider<TeamInputNotifier, String>(
   TeamInputNotifier.new,
 );
 
@@ -34,7 +33,7 @@ class _DataAskScreenState extends ConsumerState<DataAskScreen> {
   void initState() {
     super.initState();
     // start controller with the  provider state
-    final initialText = ref.read(TeamInputProvider);
+    final initialText = ref.read(teamInputProvider);
     _controller = TextEditingController(text: initialText);
   }
 
@@ -48,10 +47,9 @@ class _DataAskScreenState extends ConsumerState<DataAskScreen> {
   @override
   Widget build(BuildContext context) {
     //  watch  provider state for updates
-    final currentText = ref.watch(TeamInputProvider);
 
     // look for state changes to update controller
-    ref.listen<String>(TeamInputProvider, (previous, next) {
+    ref.listen<String>(teamInputProvider, (previous, next) {
       if (_controller.text != next) {
         _controller.value = TextEditingValue(
           text: next,
@@ -87,7 +85,7 @@ class _DataAskScreenState extends ConsumerState<DataAskScreen> {
                 ),
                 keyboardType: TextInputType.number,
                 onChanged: (value) {
-                  ref.read(TeamInputProvider.notifier).updateText(value);
+                  ref.read(teamInputProvider.notifier).updateText(value);
                 },
               ),
             ),
@@ -96,9 +94,11 @@ class _DataAskScreenState extends ConsumerState<DataAskScreen> {
               width: 200,
               height: 50,
               child: ElevatedButton(
-                onPressed: int.tryParse(ref.watch(TeamInputProvider)) != null ? () {
-                    context.go('/teamData');
-                  } :null,
+                onPressed: int.tryParse(ref.watch(teamInputProvider)) != null
+                    ? () {
+                        context.go('/teamData');
+                      }
+                    : null,
                 style: ElevatedButton.styleFrom(
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(12.0),

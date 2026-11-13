@@ -1,7 +1,7 @@
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 
-import '../title_widget.dart';
+import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -9,13 +9,45 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: appTitleWidget()),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisSize: MainAxisSize.min,
           children: [
-
+            Text('Welcome to Reefscout', style: TextStyle(fontSize: 35), textAlign: TextAlign.center,),
+            SizedBox(height: 60,),
+            Text('Start scouting to begin \ngathering data', style: TextStyle(fontSize: 20),textAlign: TextAlign.center,),
+            SizedBox(height: 40,),
+            SizedBox(
+              width: 250.0,
+              height: 75.0,
+              child: ElevatedButton(
+                onPressed: (){context.go('/teamNumber');},
+                style: ElevatedButton.styleFrom(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(16.0),
+                  ),
+                  padding: EdgeInsets.zero,
+                ),
+                child: Text('START SCOUTING', style: TextStyle(fontSize: 20), textAlign: TextAlign.center,),
+              ),
+            ),
+            SizedBox(height: 40,),
+            SizedBox(
+              width: 250.0,
+              height: 75.0,
+              child: ElevatedButton(
+                onPressed: (){context.go('/teamDataAsk');},
+                style: ElevatedButton.styleFrom(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(16.0),
+                  ),
+                  padding: EdgeInsets.zero,
+                ),
+                child: Text('COLLECTED DATA', style: TextStyle(fontSize: 20), textAlign: TextAlign.center,),
+              ),
+            ),
           ],
         ),
       ),

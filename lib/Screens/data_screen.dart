@@ -5,12 +5,12 @@ import 'package:go_router/go_router.dart';
 import '../team_data_providor.dart';
 import 'data_ask_screen.dart';
 
-class dataScreen extends ConsumerWidget {
-  const dataScreen({super.key});
+class DataScreen extends ConsumerWidget {
+  const DataScreen({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final teamNumber = ref.watch(TeamInputProvider).trim();
+    final teamNumber = ref.watch(teamInputProvider).trim();
     final submissions = ref
         .watch(eventScoresProvider)
         .where((submission) => submission.teamNumber == teamNumber)

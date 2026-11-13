@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:http/http.dart' as http;
@@ -8,7 +7,7 @@ import 'package:training_2027_project2/team_select_segmented_button.dart';
 
 import 'API_key_providor.dart';
 
-class teamNumber extends Notifier<String> {
+class TeamNumber extends Notifier<String> {
   @override
   String build() => '';
 
@@ -17,8 +16,8 @@ class teamNumber extends Notifier<String> {
   }
 }
 
-final teamNumberProvidor =  NotifierProvider<teamNumber, String>(() {
-  return teamNumber();
+final teamNumberProvidor =  NotifierProvider<TeamNumber, String>(() {
+  return TeamNumber();
 });
 
 
@@ -41,9 +40,9 @@ final matchProvider = FutureProvider<Map<String, dynamic>>((ref) async {
 
 
 
-class teamNumberAPI extends ConsumerWidget {
+class TeamNumberAPI extends ConsumerWidget {
   final String additionalText;
-  const teamNumberAPI({required this.additionalText, super.key});
+  const TeamNumberAPI({required this.additionalText, super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

@@ -1,6 +1,7 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' as go_router;
 import 'package:go_router/go_router.dart';
 import 'package:training_2027_project2/Screens/scout_enter_team.dart';
+
 import 'Screens/data_screen.dart';
 import 'Screens/data_ask_screen.dart';
 import 'Screens/home_screen.dart';
@@ -10,10 +11,8 @@ final _router = GoRouter(
   initialLocation: '/home',
   routes: [
     ShellRoute(
-      builder: (context, state, child) => BottomBar(
-        location: state.uri.path,
-        child: child,
-      ),
+      builder: (context, state, child) =>
+          BottomBar(location: state.uri.path, child: child),
       routes: [
         GoRoute(path: '/home', builder: (context, state) => const HomeScreen()),
         GoRoute(
@@ -30,40 +29,38 @@ final _router = GoRouter(
         ),
         GoRoute(
           path: '/teamData',
-          builder: (context, state) => const dataScreen(),
+          builder: (context, state) => const DataScreen(),
         ),
       ],
     ),
   ],
 );
 
-class RouterWidget extends StatelessWidget {
+class RouterWidget extends go_router.StatelessWidget {
   const RouterWidget({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp.router(
+  go_router.Widget build(go_router.BuildContext context) {
+    return go_router.MaterialApp.router(
       routerConfig: _router,
       debugShowCheckedModeBanner: false,
-      theme: ThemeData.from(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.purple),
+      theme: go_router.ThemeData.from(
+        colorScheme: go_router.ColorScheme.fromSeed(
+          seedColor: go_router.Colors.purple,
+        ),
       ),
     );
   }
 }
 
-class BottomBar extends StatelessWidget {
-  const BottomBar({
-    required this.location,
-    required this.child,
-    super.key,
-  });
+class BottomBar extends go_router.StatelessWidget {
+  const BottomBar({required this.location, required this.child, super.key});
 
   final String location;
-  final Widget child;
+  final go_router.Widget child;
 
   @override
-  Widget build(BuildContext context) {
+  go_router.Widget build(go_router.BuildContext context) {
     final selectedIndex = switch (location) {
       '/home' => 0,
       '/teamDataAsk' => 2,
@@ -72,11 +69,11 @@ class BottomBar extends StatelessWidget {
       _ => 0,
     };
 
-    return Scaffold(
+    return go_router.Scaffold(
       body: child,
-      bottomNavigationBar: NavigationBar(
+      bottomNavigationBar: go_router.NavigationBar(
         selectedIndex: selectedIndex,
-        indicatorColor: Colors.amber,
+        indicatorColor: go_router.Colors.amber,
         onDestinationSelected: (index) {
           final location = switch (index) {
             0 => '/home',
@@ -87,16 +84,16 @@ class BottomBar extends StatelessWidget {
           context.go(location);
         },
         destinations: const [
-          NavigationDestination(
-            icon: Icon(Icons.home_outlined),
+          go_router.NavigationDestination(
+            icon: go_router.Icon(go_router.Icons.home_outlined),
             label: 'Home',
           ),
-          NavigationDestination(
-            icon: Icon(Icons.search),
+          go_router.NavigationDestination(
+            icon: go_router.Icon(go_router.Icons.search),
             label: 'Scouting',
           ),
-          NavigationDestination(
-            icon: Icon(Icons.storage),
+          go_router.NavigationDestination(
+            icon: go_router.Icon(go_router.Icons.storage),
             label: 'Data Storage',
           ),
         ],

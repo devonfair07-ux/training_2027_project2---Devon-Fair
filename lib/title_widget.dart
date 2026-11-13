@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_riverpod/legacy.dart';
 
 final appTitle = Provider<String>((ref) {
   return 'Reefscout';
 });
 
-class appTitleWidget extends ConsumerWidget {
-  const appTitleWidget({super.key});
+class AppTitleWidget extends ConsumerWidget {
+  const AppTitleWidget({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

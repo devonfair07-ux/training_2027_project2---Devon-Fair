@@ -1,11 +1,9 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import '../API_widget.dart';
 import '../team_select_segmented_button.dart';
-import 'data_ask_screen.dart';
 
 class MatchNumberNotifier extends Notifier<String> {
   @override
@@ -25,9 +23,7 @@ class Scoutenterteam extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final matchNumber = int.tryParse(
-      ref.watch(matchNumberProvidor).trim(),
-    );
+    final matchNumber = int.tryParse(ref.watch(matchNumberProvidor).trim());
     final validMatchNumber =
         matchNumber != null && matchNumber >= 1 && matchNumber <= 70;
     return Column(
@@ -78,7 +74,7 @@ class Scoutenterteam extends ConsumerWidget {
         SizedBox(height: 20),
         TeamSegmentedButton(),
         SizedBox(height: 20),
-        teamNumberAPI(additionalText: 'Team:'),
+        TeamNumberAPI(additionalText: 'Team:'),
       ],
     );
   }

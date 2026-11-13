@@ -1,6 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
+
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
@@ -9,7 +8,6 @@ import '../robots_class.dart';
 import '../team_select_segmented_button.dart';
 import '../team_data_providor.dart';
 import 'scout_enter_team.dart';
-
 
 class ScoreScreen extends ConsumerStatefulWidget {
   const ScoreScreen({super.key});
@@ -50,8 +48,8 @@ class _ScoreScreenState extends ConsumerState<ScoreScreen> {
                   ),
                 ), // Text: Currently Scouting:
                 SizedBox(height: 20), // Spacer
-                teamNumberAPI(additionalText: ''), // Team number
-                SizedBox(height: 80,),
+                TeamNumberAPI(additionalText: ''), // Team number
+                SizedBox(height: 80),
                 SizedBox(
                   width: 200.0,
                   height: 70.0,
@@ -61,21 +59,27 @@ class _ScoreScreenState extends ConsumerState<ScoreScreen> {
                       final parts = ref.read(segmentProvidor).split(' ');
                       final alliance = parts[0].toLowerCase();
                       final teamIndex = int.parse(parts[1]) - 1;
-                      final keys = data['alliances'][alliance]['team_keys'] as List<dynamic>;
-                      final teamNumber = keys[teamIndex].toString().replaceFirst('frc', '');
+                      final keys =
+                          data['alliances'][alliance]['team_keys']
+                              as List<dynamic>;
+                      final teamNumber = keys[teamIndex]
+                          .toString()
+                          .replaceFirst('frc', '');
 
-                      ref.read(teamNumberProvidor.notifier).updateText(teamNumber);
+                      ref
+                          .read(teamNumberProvidor.notifier)
+                          .updateText(teamNumber);
 
                       final submission = ScoreSubmission(
-                      teamNumber: ref.read(teamNumberProvidor),
-                      eventName: 'Pinnacles Regional 2025',
-                      matchNumber: ref.read(matchNumberProvidor),
-                      scoreL1: scoreL1,
-                      scoreL2: scoreL2,
-                      scoreAlgae: scoreAlgae,
-                      scoreL3: scoreL3,
-                      scoreL4: scoreL4,
-                      netScore: netScore,
+                        teamNumber: ref.read(teamNumberProvidor),
+                        eventName: 'Pinnacles Regional 2025',
+                        matchNumber: ref.read(matchNumberProvidor),
+                        scoreL1: scoreL1,
+                        scoreL2: scoreL2,
+                        scoreAlgae: scoreAlgae,
+                        scoreL3: scoreL3,
+                        scoreL4: scoreL4,
+                        netScore: netScore,
                       );
 
                       ref.read(eventScoresProvider.notifier).submit(submission);
@@ -87,7 +91,10 @@ class _ScoreScreenState extends ConsumerState<ScoreScreen> {
                       ),
                       padding: EdgeInsets.zero,
                     ),
-                    child: Text('Save to Reefscout', style: const TextStyle(fontSize: 20),),
+                    child: Text(
+                      'Save to Reefscout',
+                      style: const TextStyle(fontSize: 20),
+                    ),
                   ),
                 ), // plus button
               ],
@@ -109,7 +116,6 @@ class _ScoreScreenState extends ConsumerState<ScoreScreen> {
                       if (scoreL1 > 0) {
                         scoreL1--;
                       }
-                      ;
                     });
                   },
                 ),
@@ -222,7 +228,7 @@ class ScoreButtons extends StatelessWidget {
         SizedBox(
           width: 250,
           child: Text(
-            '$label',
+            label,
             style: const TextStyle(fontSize: 35),
             textAlign: TextAlign.right,
           ),
@@ -262,4 +268,3 @@ class ScoreButtons extends StatelessWidget {
     );
   }
 }
-
