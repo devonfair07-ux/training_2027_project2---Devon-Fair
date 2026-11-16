@@ -11,10 +11,8 @@ class SpecificDataScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final teamNumber = ref.watch(teamInputProvider).trim();
-    final submissions = ref
-        .watch(eventScoresProvider)
-        .where((submission) => submission.teamNumber == teamNumber)
-        .toList();
+    final submissions = ref.watch(eventScoresProvider)
+        .where((submission) => submission.teamNumber == teamNumber).toList();
     return Scaffold(
       appBar: AppBar(
         title: Text('All Teams:'),

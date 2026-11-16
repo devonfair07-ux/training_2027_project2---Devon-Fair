@@ -3,7 +3,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import '../team_data_providor.dart';
-import 'data_ask_screen.dart';
 
 class AllDataScreen extends ConsumerWidget {
   const AllDataScreen({super.key});

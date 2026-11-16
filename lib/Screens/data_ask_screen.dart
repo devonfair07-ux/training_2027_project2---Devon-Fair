@@ -32,23 +32,18 @@ class _DataAskScreenState extends ConsumerState<DataAskScreen> {
   @override
   void initState() {
     super.initState();
-    // start controller with the  provider state
     final initialText = ref.read(teamInputProvider);
     _controller = TextEditingController(text: initialText);
   }
 
   @override
   void dispose() {
-    //  dispose the controller when the widget ends
     _controller.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    //  watch  provider state for updates
-
-    // look for state changes to update controller
     ref.listen<String>(teamInputProvider, (previous, next) {
       if (_controller.text != next) {
         _controller.value = TextEditingValue(
@@ -72,7 +67,7 @@ class _DataAskScreenState extends ConsumerState<DataAskScreen> {
                 style: const TextStyle(fontSize: 35),
                 textAlign: TextAlign.center,
               ),
-            ),
+            ), // select a team text
             SizedBox(
               width: 200,
               height: 75,
@@ -88,7 +83,7 @@ class _DataAskScreenState extends ConsumerState<DataAskScreen> {
                   ref.read(teamInputProvider.notifier).updateText(value);
                 },
               ),
-            ),
+            ), // text field
             SizedBox(height: 10),
             SizedBox(
               width: 200,
@@ -107,7 +102,7 @@ class _DataAskScreenState extends ConsumerState<DataAskScreen> {
                 ),
                 child: Text('Pick Team', style: const TextStyle(fontSize: 22)),
               ),
-            ),
+            ), // pick data button
             SizedBox(height: 80,),
             SizedBox(
               width: 250,
@@ -122,7 +117,7 @@ class _DataAskScreenState extends ConsumerState<DataAskScreen> {
                 ),
                 child: Text('All Teams', style: const TextStyle(fontSize: 26)),
               ),
-            ),
+            ), // all data button
           ],
         ),
       ),

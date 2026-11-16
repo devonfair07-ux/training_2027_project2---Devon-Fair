@@ -69,13 +69,8 @@ class _ScoreScreenState extends ConsumerState<ScoreScreen> {
                       final keys =
                           data['alliances'][alliance]['team_keys']
                               as List<dynamic>;
-                      final teamNumber = keys[teamIndex]
-                          .toString()
-                          .replaceFirst('frc', '');
-
-                      ref
-                          .read(teamNumberProvidor.notifier)
-                          .updateText(teamNumber);
+                      final teamNumber = keys[teamIndex].toString().replaceFirst('frc', '');
+                      ref.read(teamNumberProvidor.notifier).updateText(teamNumber);
 
                       final submission = ScoreSubmission(
                         teamNumber: ref.read(teamNumberProvidor),
