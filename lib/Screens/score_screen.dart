@@ -3,11 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-import '../API_widget.dart';
-import '../robots_class.dart';
-import '../team_select_segmented_button.dart';
-import '../team_data_providor.dart';
-import 'scout_enter_team.dart';
+import '../Other/API_widget.dart';
+import '../Providors/match_number_scout_providor.dart';
+import '../Providors/team_number_providor.dart';
+import '../Other/robots_class.dart';
+import '../Other/team_select_segmented_button.dart';
+import '../Providors/team_data_providor.dart';
 
 class ScoreScreen extends ConsumerStatefulWidget {
   const ScoreScreen({super.key});
@@ -43,9 +44,9 @@ class _ScoreScreenState extends ConsumerState<ScoreScreen> {
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                SizedBox(width: 250), // Space from left edge
+                SizedBox(width: 220), // Space from left edge
                 SizedBox(
-                  width: 200,
+                  width: 275,
                   child: FittedBox(
                     fit: BoxFit.scaleDown,
                     child: Text(
@@ -108,7 +109,7 @@ class _ScoreScreenState extends ConsumerState<ScoreScreen> {
                   label: 'Score L1: $scoreL1',
                   onAdd: () {
                     setState(() {
-                      if (scoreL1 < 11) {
+                      if (scoreL1 < 12) {
                         scoreL1++;
                       }
                     });
@@ -125,7 +126,7 @@ class _ScoreScreenState extends ConsumerState<ScoreScreen> {
                   label: 'Score L2: $scoreL2',
                   onAdd: () {
                     setState(() {
-                      if (scoreL2 < 11) {
+                      if (scoreL2 < 12) {
                         scoreL2++;
                       }
                     });
@@ -142,7 +143,7 @@ class _ScoreScreenState extends ConsumerState<ScoreScreen> {
                   label: 'Score L3: $scoreL3',
                   onAdd: () {
                     setState(() {
-                      if (scoreL3 < 11) {
+                      if (scoreL3 < 12) {
                         scoreL3++;
                       }
                     });
@@ -159,7 +160,7 @@ class _ScoreScreenState extends ConsumerState<ScoreScreen> {
                   label: 'Score L4: $scoreL4',
                   onAdd: () {
                     setState(() {
-                      if (scoreL4 < 11) {
+                      if (scoreL4 < 12) {
                         scoreL4++;
                       }
                     });
@@ -228,7 +229,7 @@ class ScoreButtons extends StatelessWidget {
     return Row(
       children: [
         SizedBox(
-          width: 250,
+          width: 280,
           child: Text(
             label,
             style: const TextStyle(fontSize: 35),

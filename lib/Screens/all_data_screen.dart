@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-import '../team_data_providor.dart';
+import '../Providors/team_data_providor.dart';
 
 class AllDataScreen extends ConsumerWidget {
   const AllDataScreen({super.key});

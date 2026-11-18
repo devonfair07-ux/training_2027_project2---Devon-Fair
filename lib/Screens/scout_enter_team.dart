@@ -2,21 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-import '../API_widget.dart';
-import '../team_select_segmented_button.dart';
+import '../Other/API_widget.dart';
+import '../Providors/match_number_scout_providor.dart';
+import '../Other/team_select_segmented_button.dart';
 
-class MatchNumberNotifier extends Notifier<String> {
-  @override
-  String build() => '';
 
-  void updateText(String value) {
-    state = value;
-  }
-}
-
-final matchNumberProvidor = NotifierProvider<MatchNumberNotifier, String>(() {
-  return MatchNumberNotifier();
-});
 
 class Scoutenterteam extends ConsumerWidget {
   const Scoutenterteam({super.key});

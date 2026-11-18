@@ -2,29 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
+import '../Providors/data_screen_team_input_providor.dart';
+
+
+
+
 class DataAskScreen extends ConsumerStatefulWidget {
   const DataAskScreen({super.key});
 
   @override
   ConsumerState<DataAskScreen> createState() => _DataAskScreenState();
 }
-
-class TeamInputNotifier extends Notifier<String> {
-  @override
-  String build() => '';
-
-  void updateText(String newText) {
-    state = newText;
-  }
-
-  void clearText() {
-    state = '';
-  }
-}
-
-final teamInputProvider = NotifierProvider<TeamInputNotifier, String>(
-  TeamInputNotifier.new,
-);
 
 class _DataAskScreenState extends ConsumerState<DataAskScreen> {
   late final TextEditingController _controller;

@@ -1,5 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'robots_class.dart';
+import '../Other/robots_class.dart';
 
 
 class EventScoresNotifier extends Notifier<List<ScoreSubmission>> {

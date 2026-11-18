@@ -2,23 +2,11 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:http/http.dart' as http;
-import 'package:training_2027_project2/Screens/scout_enter_team.dart';
-import 'package:training_2027_project2/team_select_segmented_button.dart';
+import 'package:training_2027_project2/Other/team_select_segmented_button.dart';
 
-import 'API_key_providor.dart';
+import '../Providors/API_key_providor.dart';
+import '../Providors/match_number_scout_providor.dart';
 
-class TeamNumber extends Notifier<String> {
-  @override
-  String build() => '';
-
-  void updateText(String value) {
-    state = value;
-  }
-}
-
-final teamNumberProvidor =  NotifierProvider<TeamNumber, String>(() {
-  return TeamNumber();
-});
 
 
 

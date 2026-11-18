@@ -2,11 +2,11 @@ import 'package:flutter/material.dart' as go_router;
 import 'package:go_router/go_router.dart';
 import 'package:training_2027_project2/Screens/scout_enter_team.dart';
 
-import 'Screens/all_data_screen.dart';
-import 'Screens/specific_data_screen.dart';
-import 'Screens/data_ask_screen.dart';
-import 'Screens/home_screen.dart';
-import 'Screens/score_screen.dart';
+import '../Screens/all_data_screen.dart';
+import '../Screens/specific_data_screen.dart';
+import '../Screens/data_ask_screen.dart';
+import '../Screens/home_screen.dart';
+import '../Screens/score_screen.dart';
 
 final _router = GoRouter(
   initialLocation: '/home',
